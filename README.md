@@ -1,6 +1,6 @@
 ## **Intro**
 
-Hello word.
+https://webappnewreact.herokuapp.com/signin
 
 ## **Quick-start**
 
@@ -22,11 +22,6 @@ Hello word.
 6. Rodar Linter
 `yarn lint`
 
-7. Rodar o Formatador de Código
-`yarn format`
-
-8. Inicializar Ferramenta de Inspeção de Bundle
-`yarn bundle-profile:analyze`
 
 ## **Configuraçõees**
 
