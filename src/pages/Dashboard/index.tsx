@@ -7,7 +7,6 @@ import { createSelectorHook as createSelectorHook2 } from '../../interfaces/user
 
 const Dashboard = (statemenu: any) => {
   const Data = useSelector((state: createSelectorHook) => state.datetime);
-  console.log(statemenu.statemenu);
   return (
     <Container
       style={
