@@ -27,12 +27,7 @@ const SignUp = () => {
 
   const classes = useStyles();
   return (
-    <form
-      onSubmit={handleSubmit}
-      className={classes.root}
-      noValidate
-      autoComplete="off"
-    >
+    <form onSubmit={handleSubmit} className={classes.root} autoComplete="off">
       {response.create &&
         (toast.success('Cadastro efetuado com sucesso!'),
         (<Redirect to="signin" />))}
@@ -40,6 +35,7 @@ const SignUp = () => {
         <img className={classes.img} alt="logo" src={logoFirefox} />
       </Container>
       <TextField
+        required
         value={nome}
         onChange={e => setNome(e.target.value)}
         id="standard-basic"
@@ -47,6 +43,7 @@ const SignUp = () => {
         type="text"
       />
       <TextField
+        required
         value={email}
         onChange={e => setEmail(e.target.value)}
         id="standard-basic"
@@ -54,6 +51,7 @@ const SignUp = () => {
         type="email"
       />
       <TextField
+        required
         value={senha}
         onChange={e => setSenha(e.target.value)}
         id="standard-basic"

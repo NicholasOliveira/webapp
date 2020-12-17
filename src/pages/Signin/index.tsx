@@ -28,7 +28,6 @@ const SignIn = () => {
     <form
       onSubmit={e => handleSubmit(e)}
       className={classes.root}
-      noValidate
       autoComplete="off"
     >
       {response.logged === true && <Redirect to="dashboard" />}
@@ -36,7 +35,7 @@ const SignIn = () => {
         <img className={classes.img} alt="logo" src={logoFirefox} />
       </Container>
       <TextField
-        required={true}
+        required
         value={email}
         onChange={e => setEmail(e.target.value)}
         id="standard-basic"
@@ -44,7 +43,7 @@ const SignIn = () => {
         type="email"
       />
       <TextField
-        required={true}
+        required
         value={senha}
         onChange={e => setSenha(e.target.value)}
         id="standard-basic"
