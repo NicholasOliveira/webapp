@@ -5,11 +5,11 @@
  - Login mockado, autenticação pré-pronta / processo posterior backend 
 
 
-## **Production**
+## **Build em produção**
 
-https://webappnewreact.herokuapp.com/signin
+Deploy in Heroku [CI/CD] = https://webappnewreact.herokuapp.com/signin
 
-## **Quick-start**
+## **Como iniciar ? **
 
 1. Instalar Yarn
 `npm install yarn -g`
