@@ -2,7 +2,10 @@
 
  - Base de dados conectada atráves do firebase.
  - estou implementado testes(não fiz tdd)
- - Login mockado, autenticação pré-pronta / processo posterior backend 
+ - Login mockado, autenticação pré-pronta / processo posterior backend
+ - Dados persistido atráves do redux-persist
+ - Controle de estado atráves do redux
+ - tests in progress...
 
 
 ## **Build em produção**
