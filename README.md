@@ -1,6 +1,8 @@
 ## **Intro**
 
-Hello Word
+ - Base de dados conectada atráves do firebase.
+ - estou implementado testes(não fiz tdd)
+ - Login mockado, autenticação pré-pronta / processo posterior backend 
 
 
 ## **Production**
