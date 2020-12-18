@@ -9,8 +9,11 @@ import {
 
 import { Menu as MenuIcon, ExitToApp } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
-import { useStyles, BarUser } from './styles';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import * as DataActions from '../../store/modules/users/actions';
+import { useStyles, BarUser } from './styles';
 
 const Header = ({
   mobileOpen,
@@ -21,10 +24,19 @@ const Header = ({
 }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
   useEffect(() => {
     dispatch(DataActions.setUserConfig(mobileOpen));
   }, [mobileOpen]);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   function handleHeaderToggle() {
     mobileOpen ? setMobileOpen(false) : setMobileOpen(true);
@@ -51,18 +63,27 @@ const Header = ({
           </IconButton>
 
           <Typography variant="h6" className={classes.typografhItem} noWrap>
-            <BarUser />
-            <IconButton
-              color="inherit"
-              aria-label="Logout"
-              edge="start"
-              onClick={handleExitApp}
-              className={classes.menuButton}
+            <Button
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
             >
-              <ExitToApp />
-            </IconButton>
+              <BarUser />
+            </Button>
           </Typography>
         </Toolbar>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>Meu perfil</MenuItem>
+          <MenuItem onClick={handleExitApp}>
+            Sair <ExitToApp style={{ marginLeft: '7px' }} />
+          </MenuItem>
+        </Menu>
       </AppBar>
     </div>
   );

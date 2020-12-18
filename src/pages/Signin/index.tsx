@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { Link, Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { Container, useStyles } from './styles';
 import logoFirefox from '../../assets/logoFirefox.png';
 import * as DataActions from '../../store/modules/users/actions';
