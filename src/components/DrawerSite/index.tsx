@@ -31,8 +31,13 @@ const MenuBar = ({
         return (
           <div key={subOption.name}>
             <ListItem button key={subOption.name}>
-              <Link to={subOption.url}>
-                <ListItemText inset primary={subOption.name} />
+              <Link className={classes.link} to={subOption.url}>
+                {subOption.icon}
+                <ListItemText
+                  className={classes.textLink}
+                  inset
+                  primary={subOption.name}
+                />
               </Link>
             </ListItem>
           </div>

@@ -9,7 +9,7 @@ import {
 
 import { Menu as MenuIcon, ExitToApp } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
-import { useStyles } from './styles';
+import { useStyles, BarUser } from './styles';
 import * as DataActions from '../../store/modules/users/actions';
 
 const Header = ({
@@ -50,7 +50,8 @@ const Header = ({
             <MenuIcon />
           </IconButton>
 
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6" className={classes.typografhItem} noWrap>
+            <BarUser />
             <IconButton
               color="inherit"
               aria-label="Logout"

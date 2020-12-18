@@ -9,9 +9,7 @@ import history from './services/history';
 
 import GlobalStyle from './styles/global';
 
-import configureStore from './store/configStore';
-
-const { store, persistor } = configureStore();
+import { store, persistor } from './store';
 
 const App: React.FC = () => {
   return (

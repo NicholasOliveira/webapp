@@ -3,6 +3,9 @@ import {
   validUser,
   logoutUser,
   userConfig,
+  validUserRequest,
+  validUserSucess,
+  loadeapp,
 } from '../../actions/actionTypes';
 
 export const loadData = (category: string) => ({});
@@ -12,8 +15,18 @@ export const setUserConfig = (data: object) => ({
   payload: data,
 });
 
-export const validateUser = (data: object) => ({
-  type: validUser,
+export const validateUserRequest = (data: object) => ({
+  type: validUserRequest,
+  payload: data,
+});
+
+export const validateUserSucess = (data: object) => ({
+  type: validUserSucess,
+  payload: data,
+});
+
+export const loadApp = (data: object) => ({
+  type: loadeapp,
   payload: data,
 });
 

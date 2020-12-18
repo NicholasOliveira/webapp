@@ -12,6 +12,14 @@ export const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  link: {
+    display: 'flex',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  textLink: {
+    paddingLeft: '20px',
+  },
   drawer: {
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,

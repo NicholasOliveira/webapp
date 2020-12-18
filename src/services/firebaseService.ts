@@ -1,4 +1,4 @@
-import {firebaseDatabase} from '../config/firebaseConfig'
+import {firebaseDatabase, firebaseAuth} from '../config/firebaseConfig'
 
 export default class FirebaseService {
 
@@ -27,9 +27,24 @@ export default class FirebaseService {
     };
 
     static login = (email:string, password:string) => {
-     //return firebaseAuth.signInWithEmailAndPassword(email, password)
-      return {status: 201}
+     const status:any = firebaseAuth.signInWithEmailAndPassword(email, password)
+     .then((user) => {
+        return {status:201}
+      })
+    .catch((error) => {
+        return {status:501}
+    });
+    return status;
   };
 
+  static createUser = (email:string, password:string, displayName:string) => {
+    firebaseAuth.createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        console.log(user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
 }
 

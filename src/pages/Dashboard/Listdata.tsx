@@ -31,7 +31,9 @@ export default function DataTable({ Data }: any) {
   Data = Data.map((data: any) => {
     for (let i = 0; i < 5; i++) {
       data[opt[i]] = isNumber(data[opt[i]])
-        ? new Date(data[opt[i]]).toLocaleTimeString('pt-BR')
+        ? opt[i] !== 'date'
+          ? new Date(data[opt[i]]).toLocaleTimeString('pt-BR')
+          : new Date(data[opt[i]]).toLocaleDateString('pt-BR')
         : data[opt[i]];
     }
     return data;

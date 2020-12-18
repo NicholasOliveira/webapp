@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
@@ -8,6 +8,7 @@ import { Container, useStyles } from './styles';
 import logoFirefox from '../../assets/logoFirefox.png';
 import * as DataActions from '../../store/modules/users/actions';
 import { createSelectorHook } from '../../interfaces/userInterfaces';
+import loadImg from '../../assets/loading.gif';
 
 const SignIn = () => {
   const classes = useStyles();
@@ -16,14 +17,10 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const response = useSelector((state: createSelectorHook) => state.users);
-
   function handleSubmit(e: any) {
     e.preventDefault();
-    dispatch(DataActions.validateUser({ email, senha }));
-    setEmail('');
-    setSenha('');
+    dispatch(DataActions.validateUserRequest({ email, senha }));
   }
-
   return (
     <form
       onSubmit={e => handleSubmit(e)}
@@ -56,7 +53,12 @@ const SignIn = () => {
         color="primary"
         className={classes.button}
       >
-        Efetuar login <ArrowForwardIosIcon />
+        Efetuar login{' '}
+        {response.load ? (
+          <img style={{ width: 25, marginLeft: 10 }} src={loadImg} />
+        ) : (
+          <ArrowForwardIosIcon />
+        )}
       </Button>
 
       <Link to="/signup">

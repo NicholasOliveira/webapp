@@ -1,16 +1,30 @@
-import { call, put, takeLatest, all } from 'redux-saga/effects';
-import api from '../../../services/MockedApi';
+import { call, put, takeEvery, takeLatest } from 'redux-saga/effects';
+import FirebaseService from '../../../services/firebaseService';
+import { action } from '../../../interfaces/userInterfaces';
+import { criptografar } from '../../../utils/cipher';
+import { validateUserSucess, loadApp } from './actions';
+import { validUserRequest } from '../../actions/actionTypes';
 
-//import {  } from './actions';
-
-const types = {
-  //Define types
-};
-
-function* handleData(action: any) {
-  //Define Handler
+// worker Saga: will be fired on validateUserSucess actions
+function* fetchUser(action: action) {
+  const senhaHashDecrypt = criptografar(action.payload.senha);
+  const emailLogin = action.payload.email;
+  try {
+    yield put(loadApp({ load: true }));
+    const user = yield call(
+      FirebaseService.login,
+      emailLogin,
+      senhaHashDecrypt
+    );
+    yield put(validateUserSucess(user));
+    yield put(loadApp({ load: false }));
+  } catch (e) {
+    return yield put({ type: 'USER_FETCH_FAILED', message: e.message });
+  }
 }
 
-export default all([
-  //Define Export
-]);
+function* mySaga() {
+  yield takeLatest(validUserRequest, fetchUser);
+}
+
+export default mySaga;
