@@ -1,4 +1,5 @@
 import {firebaseDatabase, firebaseAuth} from '../config/firebaseConfig'
+import firebase from 'firebase';
 
 export default class FirebaseService {
 
@@ -27,6 +28,8 @@ export default class FirebaseService {
     };
 
     static login = (email:string, password:string) => {
+      var user = firebase.auth().currentUser;
+
      const status:any = firebaseAuth.signInWithEmailAndPassword(email, password)
      .then((user) => {
         return {status:201}
@@ -46,5 +49,32 @@ export default class FirebaseService {
         console.log(error);
       });
     }
+
+    static updateUser = (displayName?:string, photoURL?:string, email?:string, password?:string) => {
+    var user:firebase.User|any = firebaseAuth.currentUser;
+        user.updateProfile({
+          displayName: "Jane Q. User",
+          photoURL: "https://example.com/jane-q-user/profile.jpg"
+        }).then(function() {
+          console.log('ok')
+        }).catch(function(error:Error) {
+          console.log('fail')
+        });
+    }
+
+
+    static getUserData = ()=>{
+      var user = firebase.auth().currentUser;
+      if (user != null) {
+        user.providerData.forEach(function (profile:any) {
+          console.log("Sign-in provider: " + profile.providerId);
+          console.log("  Provider-specific UID: " + profile.uid);
+          console.log("  Name: " + profile.displayName);
+          console.log("  Email: " + profile.email);
+          console.log("  Photo URL: " + profile.photoURL);
+        });
+      }
+    }
 }
+
 

@@ -9,6 +9,7 @@ import { validUserRequest } from '../../actions/actionTypes';
 function* fetchUser(action: action) {
   const senhaHashDecrypt = criptografar(action.payload.senha);
   const emailLogin = action.payload.email;
+  FirebaseService.updateUser('Nicholas Oliveira');
   try {
     yield put(loadApp({ load: true }));
     const user = yield call(
