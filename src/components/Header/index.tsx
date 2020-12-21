@@ -6,6 +6,7 @@ import {
   Toolbar,
   Typography,
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 import { Menu as MenuIcon, ExitToApp } from '@material-ui/icons';
 import { useDispatch } from 'react-redux';
@@ -79,7 +80,9 @@ const Header = ({
           open={Boolean(anchorEl)}
           onClose={handleClose}
         >
-          <MenuItem onClick={handleClose}>Meu perfil</MenuItem>
+          <Link className={classes.linkMenu} to="/profile">
+            <MenuItem>Meu perfil</MenuItem>
+          </Link>
           <MenuItem onClick={handleExitApp}>
             Sair <ExitToApp style={{ marginLeft: '7px' }} />
           </MenuItem>

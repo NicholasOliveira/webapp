@@ -7,7 +7,7 @@ import Dashboard from '../pages/Dashboard';
 import Signin from '../pages/Signin';
 import SignUp from '../pages/SignUp';
 import AddHoras from '../pages/AddHoras';
-import ReportPage from '../pages/ReportPage';
+import Profile from '../pages/Profile';
 
 export default function Routes() {
   return (
@@ -17,7 +17,7 @@ export default function Routes() {
       <Route path="/signin" component={Signin} />
       <Route path="/signup" component={SignUp} />
       <Route path="/cadastrar-horas" component={AddHoras} isPrivate />
-      <Route path="/relatorio" component={ReportPage} isPrivate />
+      <Route path="/profile" component={Profile} isPrivate />
     </Switch>
   );
 }
